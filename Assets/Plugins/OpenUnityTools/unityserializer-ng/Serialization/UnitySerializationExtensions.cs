@@ -268,7 +268,9 @@ public class SerializeWheelCollider : IComponentSerializer {
             si.Enabled = collider.enabled;
             si.brakeTorque = collider.brakeTorque;
             si.center = collider.center;
-            si.forceAppPointDistance = collider.forceAppPointDistance;
+#if UNITY_5
+			si.forceAppPointDistance = collider.forceAppPointDistance;
+#endif
             si.forwardFriction = collider.forwardFriction;
             si.mass = collider.mass;
             si.motorTorque = collider.motorTorque;
@@ -295,7 +297,9 @@ public class SerializeWheelCollider : IComponentSerializer {
                 collider.enabled = si.Enabled;
                 collider.brakeTorque = si.brakeTorque;
                 collider.center = si.center;
-                collider.forceAppPointDistance = si.forceAppPointDistance;
+#if UNITY_5
+				collider.forceAppPointDistance = si.forceAppPointDistance;
+#endif
                 collider.forwardFriction = si.forwardFriction;
                 collider.mass = si.mass;
                 collider.motorTorque = si.motorTorque;
@@ -592,7 +596,9 @@ public class SerializeNavMeshAgent : IComponentSerializer {
             offset = agent.baseOffset,
             hasPath = agent.hasPath,
             offMesh = agent.isOnOffMeshLink,
-            passable = agent.areaMask,
+#if UNITY_5
+			passable = agent.areaMask,
+#endif
             radius = agent.radius,
             stoppingDistance = agent.stoppingDistance,
             autoBraking = agent.autoBraking,
@@ -615,7 +621,9 @@ public class SerializeNavMeshAgent : IComponentSerializer {
             agent.angularSpeed = si.angularSpeed;
             agent.height = si.height;
             agent.baseOffset = si.offset;
-            agent.areaMask = si.passable;
+#if UNITY_5
+			agent.areaMask = si.passable;
+#endif
             agent.radius = si.radius;
             agent.stoppingDistance = si.stoppingDistance;
             agent.autoBraking = si.autoBraking;
@@ -728,7 +736,9 @@ public class SerializeRigidBody : IComponentSerializer {
             drag = source.drag;
             angularDrag = source.angularDrag;
             mass = source.mass;
+#if UNITY_5
             sleepThreshold = source.sleepThreshold;
+#endif
             maxAngularVelocity = source.maxAngularVelocity;
             constraints = source.constraints;
             collisionDetectionMode = source.collisionDetectionMode;
@@ -749,7 +759,9 @@ public class SerializeRigidBody : IComponentSerializer {
             body.mass = mass;
             if (!rotation.Equals(zero))
                 body.rotation = rotation;
+#if UNITY_5
             body.sleepThreshold = sleepThreshold;
+#endif
             body.maxAngularVelocity = maxAngularVelocity;
             body.constraints = constraints;
             body.collisionDetectionMode = collisionDetectionMode;
@@ -804,7 +816,9 @@ public class SerializeRenderer : IComponentSerializer {
     public class StoredInformation {
         public bool Enabled;
         public List<Material> materials = new List<Material>();
+#if UNITY_5
         public UnityEngine.Rendering.ShadowCastingMode shadowCastingMode;
+#endif
         public bool receiveShadows;
         public bool useLightProbes;
     }
@@ -819,7 +833,9 @@ public class SerializeRenderer : IComponentSerializer {
 
                 si.materials = renderer.materials.ToList();
             }
+#if UNITY_5
             si.shadowCastingMode = renderer.shadowCastingMode;
+#endif
             si.receiveShadows = renderer.receiveShadows;
             si.useLightProbes = renderer.useLightProbes;
             var data = UnitySerializer.Serialize(si);
@@ -847,7 +863,9 @@ public class SerializeRenderer : IComponentSerializer {
                         renderer.materials = si.materials.ToArray();
                     }
                 }
+#if UNITY_5
                 renderer.shadowCastingMode = si.shadowCastingMode;
+#endif
                 renderer.receiveShadows = si.receiveShadows;
                 renderer.useLightProbes = si.useLightProbes;
             }
@@ -876,7 +894,9 @@ public class SerializeLineRenderer : IComponentSerializer {
 
                 si.materials = renderer.materials.ToList();
             }
+#if UNITY_5
             si.shadowCastingMode = renderer.shadowCastingMode;
+#endif
             si.receiveShadows = renderer.receiveShadows;
             si.useLightProbes = renderer.useLightProbes;
             si.useWorldSpace = renderer.useWorldSpace;
@@ -905,7 +925,9 @@ public class SerializeLineRenderer : IComponentSerializer {
                         renderer.materials = si.materials.ToArray();
                     }
                 }
+#if UNITY_5
                 renderer.shadowCastingMode = si.shadowCastingMode;
+#endif
                 renderer.receiveShadows = si.receiveShadows;
                 renderer.useLightProbes = si.useLightProbes;
                 renderer.useWorldSpace = si.useWorldSpace;
@@ -938,7 +960,9 @@ public class SerializeTrailRenderer : IComponentSerializer {
 
                 si.materials = renderer.materials.ToList();
             }
+#if UNITY_5
             si.shadowCastingMode = renderer.shadowCastingMode;
+#endif
             si.receiveShadows = renderer.receiveShadows;
             si.useLightProbes = renderer.useLightProbes;
             si.autodestruct = renderer.autodestruct;
@@ -970,7 +994,9 @@ public class SerializeTrailRenderer : IComponentSerializer {
                         renderer.materials = si.materials.ToArray();
                     }
                 }
+#if UNITY_5
                 renderer.shadowCastingMode = si.shadowCastingMode;
+#endif
                 renderer.receiveShadows = si.receiveShadows;
                 renderer.useLightProbes = si.useLightProbes;
                 renderer.autodestruct = si.autodestruct;
@@ -1005,7 +1031,9 @@ public class SerializeSkinnedMeshRenderer : IComponentSerializer {
 
                 si.materials = renderer.materials.ToList();
             }
+#if UNITY_5
             si.shadowCastingMode = renderer.shadowCastingMode;
+#endif
             si.receiveShadows = renderer.receiveShadows;
             si.useLightProbes = renderer.useLightProbes;
             si.localBounds = renderer.localBounds;
@@ -1036,7 +1064,9 @@ public class SerializeSkinnedMeshRenderer : IComponentSerializer {
                         renderer.materials = si.materials.ToArray();
                     }
                 }
+#if UNITY_5
                 renderer.shadowCastingMode = si.shadowCastingMode;
+#endif
                 renderer.receiveShadows = si.receiveShadows;
                 renderer.useLightProbes = si.useLightProbes;
                 renderer.localBounds = si.localBounds;
@@ -1204,7 +1234,9 @@ public class SerializeAudioLowPassFilter : IComponentSerializer {
             var si = new StoredInformation();
             si.enabled = filter.enabled;
             si.cutoffFrequency = filter.cutoffFrequency;
+#if UNITY_5
             si.lowpassResonanceQ = filter.lowpassResonanceQ;
+#endif
             var data = UnitySerializer.Serialize(si);
             return data;
         }
@@ -1221,7 +1253,9 @@ public class SerializeAudioLowPassFilter : IComponentSerializer {
                     return;
                 }
                 filter.cutoffFrequency = si.cutoffFrequency;
+#if UNITY_5
                 filter.lowpassResonanceQ = si.lowpassResonanceQ;
+#endif
                 filter.enabled = si.enabled;
             }
         }
@@ -1245,7 +1279,9 @@ public class SerializeAudioHighPassFilter : IComponentSerializer {
             var si = new StoredInformation();
             si.enabled = filter.enabled;
             si.cutoffFrequency = filter.cutoffFrequency;
+#if UNITY_5
             si.highpassResonanceQ = filter.highpassResonanceQ;
+#endif
             var data = UnitySerializer.Serialize(si);
             return data;
         }
@@ -1262,7 +1298,9 @@ public class SerializeAudioHighPassFilter : IComponentSerializer {
                     return;
                 }
                 filter.cutoffFrequency = si.cutoffFrequency;
+#if UNITY_5
                 filter.highpassResonanceQ = si.highpassResonanceQ;
+#endif
                 filter.enabled = si.enabled;
             }
         }
@@ -1304,7 +1342,9 @@ public class SerializeEventSystem : IComponentSerializer {
                     Debug.LogError("An error occured when getting the stored information for a EventSystem");
                     return;
                 }
+#if UNITY_5
                 system.firstSelectedGameObject = si.firstSelectedGameObject;
+#endif
                 system.pixelDragThreshold = si.pixelDragThreshold;
                 system.sendNavigationEvents = si.sendNavigationEvents;
                 system.enabled = si.enabled;
