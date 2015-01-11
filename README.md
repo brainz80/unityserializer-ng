@@ -1,6 +1,8 @@
 #Introduction#
 ##What is unityserializer-ng?##
-unityserialier-ng is a fork of Mike Talbot's Unity Serializer asset; A complete save solution for games made with Unity 5. 
+This is not the original unityserializer-ng. This is fork by yours truly. As TheSniperFan states in his fork, his version is built specificly for Unity 5 - and actualy breaks when trying to run it on an older version. Therefore I decided to fork my own version - which should hopefully (not tested though) still work on Unity 5 beta, but at least now should work on Unity 4 again.
+
+The rest of the readme is a copy of TheSniperFans ...
 
 ##What's wrong with the original Unity Serializer?##
 It has been discontinued some time ago. While Unity has been updated a lot, the US (Unity Serializer) hasn't been since 2013. Bug fixes, stability improvements and support for completely new features did not happen. The way US has been written, ensured that it will be flexible enough to not fully break on each update. As a result, it kept working with Unity 4. However, the Unity 5 update was the straw that finally broke the camel's neck and made US stop working.
